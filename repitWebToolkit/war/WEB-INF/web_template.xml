@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+  <context-param>
+    <description>
+        Name of the class that implements the PrincipalDO interface as JDO object
+    </description>
+    <param-name>principalImpl</param-name>
+    <param-value>ch.repit.rwt.server.user.User</param-value>
+  </context-param>
+  <context-param>
+    <description>
+        Name of the attribute that has to be queried in the specified principal
+        JDO implementation class to match against the nickname
+    </description>
+    <param-name>nickNameAttribute</param-name>
+    <param-value>login</param-value>
+  </context-param>
+  <context-param>
+    <description>
+        Name of class implementing interface BentoInitializer to be called once
+    </description>
+    <param-name>bentoInitializerClass</param-name>
+    <param-value>ch.repit.site.client.RepitBentoInitializer</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>authenticationService</servlet-name>
+    <servlet-class>ch.repit.rwt.server.security.AuthenticationServiceImpl</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>persistenceService</servlet-name>
+    <servlet-class>ch.repit.rwt.server.persistence.PersistenceServiceImpl</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>auditQueryService</servlet-name>
+    <servlet-class>ch.repit.rwt.server.audit.AuditQueryServiceImpl</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>fileUploadServlet</servlet-name>
+    <servlet-class>ch.repit.rwt.server.file.FileUploadServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>fileDownloadServlet</servlet-name>
+    <servlet-class>ch.repit.rwt.server.file.FileDownloadServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>dailyMailReports</servlet-name>
+    <servlet-class>ch.repit.rwt.server.notification.ScheduledReportsServlet</servlet-class>
+    <init-param>
+      <param-name>frequency</param-name>
+      <param-value>dailyReport</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>weeklyMailReports</servlet-name>
+    <servlet-class>ch.repit.rwt.server.notification.ScheduledReportsServlet</servlet-class>
+    <init-param>
+      <param-name>frequency</param-name>
+      <param-value>weeklyReport</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>mailerTask</servlet-name>
+    <servlet-class>ch.repit.rwt.server.notification.EmailSendingTask</servlet-class>
+    <init-param>
+      <param-name>domain</param-name>
+      <param-value>%DOMAIN%</param-value>
+    </init-param>
+    <init-param>
+      <param-name>senderEmail</param-name>
+      <param-value>tommy@repit.ch</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>pdfGenerator</servlet-name>
+    <servlet-class>ch.repit.rwt.server.pdf.PdfGeneratorServlet</servlet-class>
+    <init-param>
+      <param-name>listeDesMembres.pdf</param-name>
+      <param-value>ch.repit.rwt.server.user.UserListPdfReport</param-value>
+    </init-param>
+    <init-param>
+      <param-name>etiquettes.pdf</param-name>
+      <param-value>ch.repit.rwt.server.user.UserAddressStickersPdf</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+<!-- no current migration
+  <servlet>
+    <servlet-name>migrator</servlet-name>
+    <servlet-class>ch.repit.server.booking.MigrateDateTypes</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  -->
+  <servlet-mapping>
+    <servlet-name>authenticationService</servlet-name>
+    <url-pattern>/repit/authenticationService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>persistenceService</servlet-name>
+    <url-pattern>/repit/persistenceService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>auditQueryService</servlet-name>
+    <url-pattern>/repit/auditQueryService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>fileUploadServlet</servlet-name>
+    <url-pattern>/fileUploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>fileDownloadServlet</servlet-name>
+    <url-pattern>/getFile/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dailyMailReports</servlet-name>
+    <url-pattern>/cron/dailyMailReports</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>weeklyMailReports</servlet-name>
+    <url-pattern>/cron/weeklyMailReports</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>mailerTask</servlet-name>
+    <url-pattern>/tasks/mailSender</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>pdfGenerator</servlet-name>
+    <url-pattern>/pdf/*</url-pattern>
+  </servlet-mapping>
+
+<!-- no current migration
+  <servlet-mapping>
+    <servlet-name>migrator</servlet-name>
+    <url-pattern>/repit/migrator</url-pattern>
+  </servlet-mapping>
+  -->
+
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/cron/*</url-pattern>
+      <url-pattern>/tasks/*</url-pattern>
+<!--      <url-pattern>/repit/migrator</url-pattern> -->
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <welcome-file-list>
+    <welcome-file>Repit.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>

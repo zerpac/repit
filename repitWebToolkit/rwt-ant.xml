@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="rwt base ant file" default="build" basedir=".">
+
+  <!--
+  <property name="gae.sdk" location="../../tools/appengine-java-sdk-1.7.5" />
+  <property name="gwt.sdk" location="../../tools/gwt-2.5.0" />
+  <property name="gwt.sdk" location="../../tools/gwt-2.7.0" />
+  -->
+  
+  <property name="gae.sdk" location="../../tools/appengine-java-sdk-1.9.38" />
+  <property name="gwt.sdk" location="../../tools/gwt-2.7.0" />
+
+  <property name="rwt" location="../repitWebToolkit"/>
+
+  <property name="rwt.project" value="rwt"/>
+  
+  <import file="${gae.sdk}/config/user/ant-macros.xml" />
+
+  <condition property="is_sub_project">
+    <not>
+      <equals arg1="${rwt.project}" arg2="rwt"/>
+    </not>
+  </condition>
+
+
+  <path id="project.classpath">
+    <pathelement location="war/WEB-INF/classes"/>
+    <pathelement location="${gwt.sdk}/gwt-user.jar"/>
+    <fileset dir="${gwt.sdk}" includes="gwt-dev*.jar"/>
+    <fileset dir="${gwt.sdk}" includes="validation-*.jar"/>
+    <!-- Add any additional non-server libs (such as JUnit) -->
+    <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
+  </path>
+
+
+  <!-- only executed if invoked from subproject -->
+  <target name="import.rwt" description="imports again the rwt jar" if='is_sub_project'>
+    <ant antfile="${rwt}/rwt-ant.xml" target="dist" dir="${rwt}"/>
+    <copy file="${rwt}/dist/rwt.jar"
+          todir="war/WEB-INF/lib"/>
+  </target>
+
+  <!-- import libs -->
+  <target name="import.libs" description="Copies the App Engine JARs to the WAR.">
+    <mkdir dir="war/WEB-INF/lib" />
+    <!-- GAE -->
+    <copy todir="war/WEB-INF/lib" flatten="true">
+      <fileset dir="${gae.sdk}/lib/user">
+        <include name="**/*.jar" />
+      </fileset>
+    </copy>
+    <!-- GWT -->
+    <copy todir="war/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet.jar" />
+    <!-- RWT libs -->
+    <copy todir="war/WEB-INF/lib" flatten="true">
+        <fileset dir="${rwt}/libs" includes="**/*.jar"/>
+    </copy>
+    <!-- CUST: add any othe libs -->
+  </target>
+
+  <!-- compile section -->
+  <target name="copy.resources">
+    <mkdir dir="war/WEB-INF/classes" />
+    <copy todir="war/WEB-INF/classes">
+      <fileset dir="src">
+        <exclude name="**/*.java" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="compile.gae" depends="import.libs,copy.resources"
+      description="Compiles Java sources">
+    <javac srcdir="src" includes="**" encoding="utf-8"
+        destdir="war/WEB-INF/classes"
+        source="1.5" target="1.5" nowarn="true"
+        debug="true" debuglevel="lines,vars,source">
+      <classpath refid="project.classpath"/>
+    </javac>
+    <!-- datanucleaus enhance -->
+    <enhance failonerror="true">
+      <classpath>
+        <pathelement path="${appengine.tools.classpath}"/>
+        <pathelement path="war/WEB-INF/classes"/>
+        <fileset dir="war/WEB-INF/lib" includes="*.jar"/>
+      </classpath>
+      <fileset dir="war/WEB-INF/classes" includes="**/*.class"/>
+    </enhance>
+  </target>
+
+  <target name="compile.gwt" depends="compile.gae" description="GWT compile to JavaScript">
+    <java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+      <classpath>
+        <pathelement location="src"/>
+        <pathelement location="${rwt}/src"/>
+        <path refid="project.classpath"/>
+      </classpath>
+      <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+      <jvmarg value="-Xmx256M"/>
+      <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+      <arg value="${gwt.main-class}"/>
+    </java>
+  </target>
+
+  <target name="dist" depends="compile.gae"
+          description="packages rwt in the dist folder">
+    <mkdir dir="dist"/>
+    <jar basedir="war/WEB-INF/classes" file="dist/rwt.jar"/>
+  </target>
+
+  <!-- run section -->
+
+  <target name="run.devmode" depends="compile.gae" description="Run development mode">
+    <java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
+      <classpath>
+        <pathelement location="src"/>
+        <pathelement location="${rwt}/src"/>
+        <path refid="project.classpath"/>
+        <pathelement location="${gae.sdk}/lib/appengine-tools-api.jar"/>
+        <fileset dir="${gae.sdk}/lib/tools">
+          <include name="**/asm-*.jar"/>
+          <include name="**/datanucleus-enhancer-*.jar"/>
+        </fileset>
+        <pathelement location="${gae.sdk}/lib/agent/appengine-agent.jar"/>
+      </classpath>
+      <jvmarg value="-Xmx256M"/>
+      <arg value="-startupUrl"/>
+      <arg value="${gwt.main-jsp}"/>
+      <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+      <arg value="-server"/>
+      <arg value="com.google.appengine.tools.development.gwt.AppEngineLauncher"/>
+      <arg value="${gwt.main-class}"/>
+    </java>
+  </target>
+
+  <target name="run.localserver" depends="compile.gae"
+      description="Starts the development server.">
+    <dev_appserver war="war" />
+  </target>
+
+
+  <!-- deploy section -->
+  <target name="update.gae" depends="compile.gae"
+      description="Uploads the application to App Engine.">
+    <appcfg action="update" war="war" />
+  </target>
+
+  <target name="update.gae-indexes" depends="compile.gae"
+      description="Uploads just the datastore index configuration to App Engine.">
+    <appcfg action="update_indexes" war="war" />
+  </target>
+
+
+  <!-- cleaning section -->
+  <target name="clean" description="Cleans this project">
+    <delete dir="war/WEB-INF/classes" failonerror="false" />
+    <delete dir="war/WEB-INF/lib" failonerror="false" />
+    <delete dir="war/${rwt.project}" failonerror="false"/>
+    <delete dir="dist" failonerror="false"/>
+  </target>
+  <target name="clobber" depends='clean' description="Cleans this project and RWT" if='is_sub_project'>
+    <ant antfile="${rwt}/rwt-ant.xml" target="clean" dir="${rwt}"/>
+  </target>
+
+</project>

@@ -1,0 +1,409 @@
+
+
+
+body.rwtBody {
+    background-image: url(rwtimg/baobab.jpg); /* http://www.trekearth.com/gallery/photo826926.htm */
+    background-color: #006794;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    background-position: bottom left;
+}
+
+
+.rwtLoading-frame {
+    background: url(rwtimg/pixl_white_0_7.png);
+    background: rgba(255,255,255,0.7);
+    border-style: solid;
+    border-width: 1px;
+    border-color: olive;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 200px;
+    width: 300px;
+}
+
+
+.rwt-topLineLink {
+    text-align: center;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+.rwt-topLineLink-red {
+    background-color: #ffbbbb;
+}
+.rwt-topLineLink-yellow {
+    background-color: yellow;
+}
+
+.rwt-menus {
+    width: 200px;
+}
+
+.rwt-menuItem {
+    margin-left: 30px;
+    padding: 2px;
+    color: black;
+    left: 30px;
+    text-indent: 10px;
+    border-style: hidden;
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.rwt-menuItem:hover {
+    background: url(rwtimg/pixl_white_0_2.png);
+    background: rgba(255,255,255,0.2);
+}
+.rwt-pageTab:hover {
+    background: url(rwtimg/pixl_lightgrey_0_7.png);
+    background: rgba(240,240,240,0.3);
+}
+.rwt-menuItem-selected,.rwt-menuItem-selected:hover, .rwt-pageHolder,.rwt-topLine {
+    background: url(rwtimg/pixl_white_0_4.png);
+    background: rgba(255,255,255,0.4);
+}
+.rwt-pageTab-selected, .rwt-pageTab-selected:hover,.rwt-page, .rwt-pageComment {
+    background: url(rwtimg/pixl_lightgrey_0_7.png);
+    background: rgba(240,240,240,0.7);
+}
+
+/* for debug : solid and 1 . normal is none and 0*/
+.rwt-pageHolder, .rwt-pageMenuBar, .rwt-page, .rwt-pageToolBar, .rwt-pageContent, .rwt-pageComment {
+    border-style: none;
+    border-width: 0px;
+}
+
+
+
+.rwt-pageHolder {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 90%;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-bottom: 20px;
+    padding-top: 4px;
+    border-color: fuchsia;
+}
+
+.rwt-pageMenuBar {
+    border-color: teal;
+    width: 100%;
+}
+.rwt-pageMenuBarHistory {
+    margin: 2px;
+    margin-right: 32px;
+}
+.rwt-pageTab {
+    border-width: 0px;
+    margin-left: 0px;
+    margin-right: 4px;
+    margin-top: 4px;  /* was -6. it was nice (tabs higher than border) but not working with ie7... */
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.rwt-page {
+    border-color: red;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 12px;
+    width: 100%;
+}
+
+.rwt-pageToolBar {
+    margin: 0px;
+    padding: 0px;
+    width: 98%;
+    border-color: aqua;
+}
+.rwt-pageToolbarItem {
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.rwt-pageContent {
+    border-color: purple;
+    margin: 8px;
+    padding: 0px;
+    width: 98%;
+    text-align: left;
+    background-color: #f0f0f0;
+}
+.rwt-pageContentWhite {
+    background-color: white;
+}
+
+.rwt-pageComment {
+    border-color: maroon;
+    margin: 2px;
+    padding: 4px;
+    font-size: 0.9em;
+}
+
+.rwt-userPhoto {
+    padding: 6px;
+}
+
+.rwt-pushButton {
+    border-style: none;
+}
+
+
+
+.rwt-logToaster,
+.rwt-logToaster-displayed,
+.rwt-logToaster-dimmed {
+    border-style: solid;
+    border-width: 1px;
+    border-color: olive;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 4px;
+}
+.rwt-logToaster {
+    border-width: 0px;
+}
+.rwt-logToaster-displayed {
+    background-color: #ffffcc;
+}
+.rwt-logToaster-dimmed  {
+    background: url(rwtimg/pixl_yellow_0_5.png);
+    background: rgba(255,255,204,0.5);
+}
+
+
+
+
+
+
+.rwt-list-headerCell,
+.rwt-list-headerCellSortable {
+    margin: 1px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-style: italic;
+    font-variant: small-caps;
+    color: olive;
+    background-color: #e3e8f3;
+}
+.rwt-list-headerCellSortable {
+    border-width: 2px;
+    border-style:outset;
+    cursor: pointer;
+    cursor: hand;
+}
+.rwt-list-headerCell {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: olive;
+}
+.rwt-list-headerCellSortedAsc {
+    background-position: right;
+    border-style: inset;
+    background-image: url(icons/arrow_down.gif);
+    background-repeat: repeat-y;
+}
+.rwt-list-headerCellSortedDesc {
+    background-position: right;
+    border-style: inset;
+    background-image: url(icons/arrow_up.gif);
+    background-repeat: repeat-y;
+}
+
+.rwt-list-cell {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: olive;
+    padding-left: 6px;
+    padding-right: 6px;
+    cursor: pointer;
+    cursor: hand;
+    background-color: #fbfbfb;
+}
+.rwt-list-cellMultiLine {
+    font-size: 0.8em;
+}
+
+
+/* Forms */
+
+
+
+.rwt-formRowEven,.rwt-formRowOdd {
+    margin-left: 10px;
+    padding-left: 20px;
+}
+.rwt-formRowEven {
+    background-color: #e3e8f3;
+}
+.rwt-formRowOdd {
+    background-color: white;
+}
+
+.rwt-formSectionHead {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: olive;
+    color: olive;
+    font-style: italic;
+    font-variant: small-caps;
+    padding: 1px;
+    font-weight: bold;
+}
+
+.rwt-formRowTitle {
+    width: 160px;
+    padding: 5px;
+    color: olive;
+    text-align: right;
+    vertical-align: middle;
+}
+.rwt-formRowHelpLink {
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.rwt-formAttributesPanel {
+
+}
+.rwt-formAttributePanel {
+    padding-left: 20px;
+    padding-right: 4px;
+}
+.rwt-formAttributePanel-validationError {
+    background-color: #ffffcc;
+    background-position: left center;
+    background-image: url(icons/alerts/warning_small.gif);
+    background-repeat: repeat-y;
+}
+
+.rwt-formFieldLabel {
+    font-size: 0.8em;
+    color: olive;
+    margin-left: 6px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+
+/** BELOW: BEFORE REFACTO */
+
+
+.gwt-DialogBox {
+    z-index: 99;
+}
+
+
+
+/* Rich text stuff, did not even bother renaming it... */
+
+.rwt-RichTextArea {
+    background: white;
+}
+
+.rwt-RichText {
+    border: 1px solid #BBBBBB;
+    border-spacing: 0px;
+    background-color: #e3e8f3;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.hasRichTextToolbar {
+    border: 0px;
+}
+
+.gwt-RichTextToolbar {
+    background: #e3e8f3 url(images/hborder.png) repeat-x 0px -2003px;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 3px;
+    margin: 0px;
+}
+
+.gwt-RichTextToolbar .gwt-PushButton-up {
+    padding: 0px 1px 0px 0px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-PushButton-up-hovering {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 1px 0px 0px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-PushButton-down {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 0px 0px 1px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-PushButton-down-hovering {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 0px 0px 1px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-ToggleButton-up {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 1px 0px 0px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-ToggleButton-up-hovering {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 1px 0px 0px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-ToggleButton-down {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 0px 0px 1px;
+    border-width: 1px;
+}
+
+.gwt-RichTextToolbar .gwt-ToggleButton-down-hovering {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 0px 0px 0px 1px;
+    border-width: 1px;
+}
+
+
+/* end rich text */
+
+
+a:link,
+a:visited {
+  color: #0033ff;
+  text-decoration:none;
+}
+a:hover {
+    color: #ff0033;
+    text-decoration:underline;
+}
+
+img {
+    border-width: 0px;
+    border-style: none;
+}

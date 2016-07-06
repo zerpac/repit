@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+  <!-- Inherit the core Web Toolkit stuff.                       
+  <inherits name="com.google.gwt.core.Core"/> -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+  <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> 
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Enable debug ID.   ::: WHAT IS THIS FOR ???
+  <inherits name="com.google.gwt.user.Debug"/>
+  <set-property name="gwt.enableDebugId" value="true"/>
+  -->
+
+  <!-- Specify the app entry point class.    
+  <entry-point class='ch.repit.rwt.client.user.UserListPage'/>
+  <entry-point class='ch.repit.rwt.client.logs.ui.LogConsolePage'/>
+  <entry-point class='ch.repit.rwt.client.admin.AdminPage'/>   -->
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  
+  <servlet path="/persistenceService" class="ch.repit.rwt.server.persistence.PersistenceServiceImpl"/>
+  <servlet path="/authenticationService" class="ch.repit.rwt.server.security.AuthenticationServiceImpl"/>
+  <servlet path="/auditQueryService" class="ch.repit.rwt.server.audit.AuditQueryServiceImpl"/>
+
+  <!-- Specify the application specific style sheet.              -->
+  <stylesheet src='rwt.css' />
+
+  <!-- French language, independent of country  -->
+  <extend-property name="locale" values="fr"/>
+
+</module>
