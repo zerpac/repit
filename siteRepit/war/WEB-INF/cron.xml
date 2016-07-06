@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/Repit.jsp</url>
+    <description>Wake up call</description>
+    <schedule>every day 21:58</schedule>
+    <timezone>Europe/Zurich</timezone>
+  </cron>
+  <cron>
+    <url>/cron/dailyMailReports</url>
+    <description>Send mail reports every day</description>
+    <schedule>every day 22:00</schedule>
+    <timezone>Europe/Zurich</timezone>
+  </cron>
+  <cron>
+    <url>/cron/weeklyMailReports</url>
+    <description>Send mail reports once a week</description>
+    <schedule>every wednesday 22:04</schedule>
+    <timezone>Europe/Zurich</timezone>
+  </cron>
+  <cron>
+    <url>/cron/calendarArchiver</url>
+    <description>Archives calendar objects more than one day old</description>
+    <schedule>every day 22:02</schedule>
+    <timezone>Europe/Zurich</timezone>
+  </cron>
+</cronentries>

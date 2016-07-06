@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="siteRepit" default="build" basedir=".">
+
+  <!-- must define these three properties before importing rwt ant file -->
+  <property name="gwt.main-class" value="ch.repit.site.Repit"/>
+  <property name="gwt.main-jsp" value="Repit.jsp"/>
+  <property name="rwt.project" value="repit"/>
+
+  <!-- imports rwt targets -->
+  <import file="../repitWebToolkit/rwt-ant.xml"/>
+
+  <!-- this must be defined here -->
+  <target name="build" depends="import.rwt,compile.gwt" description="Build this project" />
+
+
+  <!-- Repit custom targets -->
+  <target name="prepare-prod" description="Prepares the files for a deployment in production">
+    <copy file="war/WEB-INF/appengine-web-prod.xml" tofile="war/WEB-INF/appengine-web.xml" overwrite="true"/>
+    <copy file="war/WEB-INF/web_template.xml" tofile="war/WEB-INF/web.xml" overwrite="true"/>
+    <replace file="war/WEB-INF/web.xml"
+             replacefilterfile="build-prod.properties"/>
+  </target>
+
+  <target name="prepare-beta" description="Prepares the files for a deployment in beta">
+    <copy file="war/WEB-INF/appengine-web-beta.xml" tofile="war/WEB-INF/appengine-web.xml" overwrite="true"/>
+    <copy file="war/WEB-INF/web_template.xml" tofile="war/WEB-INF/web.xml" overwrite="true"/>
+    <replace file="war/WEB-INF/web.xml"
+             replacefilterfile="build-beta.properties"/>
+  </target>
+
+  <target name="test-copy" >
+    <mkdir dir="../test2/war"/>
+    <copy todir="../test2/war">
+      <fileset dir="war" excludes="**/.svn, **/.DS*"/>
+    </copy>
+  </target>
+
+  <target name="test-copyleg" >
+    <mkdir dir="../test3/war"/>
+    <copy todir="../test3/war">
+      <fileset dir="../legacy/war" excludes="**/.svn, **/.DS*"/>
+    </copy>
+  </target>
+
+
+</project>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes  autoGenerate="true">
+
+    <!-- Used 7 times in query history -->
+    <datastore-index kind="BlogFile" ancestor="true" source="manual">
+        <property name="blogFiles_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 82 times in query history -->
+    <datastore-index kind="Blog" ancestor="false" source="manual">
+        <property name="category" direction="asc"/>
+        <property name="lastUpdate" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="User" ancestor="false" source="manual">
+        <property name="status" direction="asc"/>
+        <property name="officialCommEmail" direction="asc"/>
+        <property name="lastName" direction="asc"/>
+        <property name="firstName" direction="asc"/>
+    </datastore-index>
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="User" ancestor="false" source="manual">
+        <property name="status" direction="asc"/>
+        <property name="lastName" direction="asc"/>
+        <property name="firstName" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Booking" ancestor="false" source="manual">
+        <property name="status" direction="asc"/>
+        <property name="toDay" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="CalendarEvent" ancestor="false" source="manual">
+        <property name="status" direction="asc"/>
+        <property name="toDay" direction="asc"/>
+    </datastore-index>
+    
+    <!-- Used 829 times in query history -->
+    <datastore-index kind="AuditLogAttribute" ancestor="true" source="manual">
+        <property name="auditLogAttributes_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 43 times in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="action" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 9 times in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="object" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="author" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="objectType" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="action" direction="asc"/>
+        <property name="author" direction="asc"/>
+        <property name="objectType" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="author" direction="asc"/>
+        <property name="objectType" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="action" direction="asc"/>
+        <property name="author" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="AuditLog" ancestor="false" source="manual">
+        <property name="action" direction="asc"/>
+        <property name="objectType" direction="asc"/>
+        <property name="eventDate" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>

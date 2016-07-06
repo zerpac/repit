@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="repit">
+
+  <inherits name="ch.repit.rwt.Rwt"/>
+
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+  <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> 
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Enable debug ID.   ::: WHAT IS THIS FOR ???
+  <inherits name="com.google.gwt.user.Debug"/>
+  <set-property name="gwt.enableDebugId" value="true"/>
+  -->
+
+  <!-- only for debug  
+  <set-property name="user.agent" value="gecko1_8" />
+-->
+
+  <!-- Specify the app entry point class.       -->
+  <entry-point class='ch.repit.site.client.Repit'/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+
+  
+  <!-- Specify the application specific style sheet.              -->
+  <stylesheet src='repit.css' />
+
+  <!-- French language, independent of country  -->
+  <extend-property name="locale" values="fr"/>
+
+</module>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>siteRepit</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>siteRepit</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>siteRepit</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src</label>
+                    <type>java</type>
+                    <location>src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>war</label>
+                    <type>java</type>
+                    <location>war</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>build</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="run">
+                    <target>hosted</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>build</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>src</label>
+                        <location>src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>war</label>
+                        <location>war</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="run"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
+            <compilation-unit>
+                <package-root>src</package-root>
+                <classpath mode="compile">../repitWebToolkit/war/WEB-INF/classes:../repitWebToolkit/src:war/WEB-INF/lib/appengine-api-1.0-sdk-1.7.5.jar:war/WEB-INF/lib/appengine-api-labs-1.7.5.jar:war/WEB-INF/lib/appengine-jsr107cache-1.7.5.jar:war/WEB-INF/lib/commons-fileupload-1.2.1.jar:war/WEB-INF/lib/commons-io-1.4.jar:war/WEB-INF/lib/datanucleus-appengine-1.0.10.final.jar:war/WEB-INF/lib/datanucleus-core-1.1.5.jar:war/WEB-INF/lib/datanucleus-jpa-1.1.5.jar:war/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar:war/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar:war/WEB-INF/lib/gwt-servlet.jar:war/WEB-INF/lib/iText-5.0.4.jar:war/WEB-INF/lib/jdo2-api-2.3-eb.jar:war/WEB-INF/lib/jsr107cache-1.1.jar</classpath>
+                <source-level>1.6</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>war</package-root>
+                <source-level>1.6</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

@@ -1,0 +1,171 @@
+/** Add css rules here for your application. */
+
+/*
+body.repitBody {
+  background-image: url(images/grass-background_BETA.jpg);
+}
+*/
+
+
+body.rwtBody {
+    background-image: url(images/pra-cornet1.jpg);
+    background-color: #4b86b9;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    background-position: bottom left;
+}
+
+
+/* Blog Display */
+
+.repit-blogDisplaySubject {
+    color: olive;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.repit-blogDisplayDetails  {
+    color: olive;
+    font-size: 0.9em;
+    padding: 8px;
+    font-style: oblique;
+}
+
+.repit-blogDisplayPhoto {
+    padding: 8px;
+}
+
+.repit-blogDisplayBody {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 8px;
+    width: 95%;
+    font-size: 1.1em;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: olive;
+}
+
+.repit-blogDisplayFiles {
+
+    margin: 8px;
+    padding: 8px;
+    width: 95%;
+
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: olive;
+}
+
+.repit-blogDisplayFile{
+    margin-right: 15px;
+    text-align: center;
+}
+
+/* Calendar */
+
+td.repit-calCellEmpty {
+    background-color: white;
+    cursor: pointer;
+    cursor: hand;
+    vertical-align: top;
+}
+
+td.repit-calCellOtherMonth {
+    background-color: #eeeeee;
+    font-style: italic;
+}
+
+td.repit-calCellToday {
+    background-color: #ffffcc;
+    font-weight: bold;
+}
+
+
+td.repit-calCellSelect {
+    background-color: #ffdddd;
+}
+
+td.repit-calCellBooking,
+td.repit-calCellResa {
+    background-color: #66ff66;
+    border: thin solid;
+    border-width: 2px;
+    font-size: 0.8em;
+    border-left-style: none;
+    border-right-style: none;
+    cursor: pointer;
+    cursor: hand;
+}
+
+td.repit-calCellBooking {
+    background-color: #66ff66;
+    border-color: #009933;
+}
+td.repit-calCellResa {
+    background-color: #ff9999;
+    border-color: #993333;
+}
+
+td.repit-calCellEvent-VACATION,
+td.repit-calCellEvent-LOCAL_EVENT,
+td.repit-calCellEvent-REPIT_EVENT {
+    border-width: 0px;
+    cursor: pointer;
+    cursor: hand;
+}
+td.repit-calCellEvent-VACATION {
+    background-color: fuchsia;
+}
+td.repit-calCellEvent-LOCAL_EVENT {
+    background-color: aqua;
+}
+td.repit-calCellEvent-REPIT_EVENT {
+    background-color: yellow;
+}
+
+td.repit-calCellBooking-start {
+    border-left-style: solid;
+}
+
+td.repit-calCellBooking-end {
+    border-right-style: solid;
+}
+
+
+.repit-calendarMonthDisplay {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+td.blw {
+    border-left: thin solid white;
+    border-left-width: 1px;
+}
+td.bl {
+    border-left: thin solid olive;
+    border-left-width: 1px;
+}
+td.br {
+    border-right: thin solid olive;
+    border-right-width: 1px;
+}
+td.bt {
+    border-top: thin solid olive;
+    border-top-width: 1px;
+}
+td.bb {
+    border-bottom: thin solid olive;
+    border-bottom-width: 1px;
+}
+
+td.small {
+    font-size: 0.8em;
+}
+td.minus {
+    font-size: 0.1em;
+}
+
